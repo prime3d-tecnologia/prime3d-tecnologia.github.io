@@ -1,0 +1,61 @@
+<!-- titulo: Suporte | descricao: Central de suporte da PRIME 3D: vídeos brasileiros de instalação, uso do Bambu Studio, problemas comuns e manutenção de impressoras Bambu Lab. | aba: suporte | scripts: site.js -->
+<div class="phead">
+  <div class="wrap">
+    <div class="kick">Central de suporte</div>
+    <h1>Vídeos em português para instalar, usar e resolver</h1>
+    <p>Selecionamos vídeos de criadores brasileiros. Escolha a aba e o assunto.</p>
+  </div>
+</div>
+
+<main>
+  <section id="suporte">
+    <div class="wrap">
+      <div class="tabs" role="tablist" aria-label="Central de suporte">
+        <button type="button" role="tab" id="t-inst" aria-controls="p-inst" aria-selected="true">Instalação</button>
+        <button type="button" role="tab" id="t-sup" aria-controls="p-sup" aria-selected="false" tabindex="-1">Suporte</button>
+        <button type="button" role="tab" id="t-prob" aria-controls="p-prob" aria-selected="false" tabindex="-1">Problemas comuns e dicas</button>
+      </div>
+
+      <div role="tabpanel" id="p-inst" aria-labelledby="t-inst">
+        <div class="chips" id="inst-chips" role="group" aria-label="Escolha o modelo"></div>
+        <div id="inst"></div>
+      </div>
+
+      <div role="tabpanel" id="p-sup" aria-labelledby="t-sup" hidden>
+        <div id="sup"></div>
+      </div>
+
+      <div role="tabpanel" id="p-prob" aria-labelledby="t-prob" hidden>
+        <div class="grp">
+          <h3>Problemas comuns</h3>
+          <p>Causa mais provável e solução em ordem: tente o primeiro passo antes do próximo.</p>
+          <div class="probs" id="probs"></div>
+        </div>
+        <div class="grp">
+          <h3>Gaste menos filamento</h3>
+          <p>O desperdício aparece na troca de cor: a máquina expulsa a cor anterior do bico (a purga). Dá para reduzir bastante.</p>
+          <div class="waste">
+            <div class="panel">
+              <h4>Mesma peça, máquinas diferentes</h4>
+              <p>Teste do fabricante: dinossauro de 6 cores. Descarte de purga em gramas.</p>
+              <div class="bars" id="bars"></div>
+              <div class="cap">Fonte: página oficial da H2C (bambulab.com). Com um bico (H2S), toda troca de cor gera purga; com dois bicos (H2D, X2D), parte das trocas não gera; com o Vortek (H2C), cada cor pode ter o seu bico.</div>
+            </div>
+            <div class="panel">
+              <h4>8 ajustes que reduzem o descarte</h4>
+              <p>No Bambu Studio, gratuitos e válidos para qualquer modelo com AMS.</p>
+              <ul class="how" id="how"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="grp">
+          <h3>Manutenção de rotina</h3>
+          <p>Frequências de referência para uso normal. Quem imprime todo dia deve encurtar os intervalos.</p>
+          <div class="tbl"><table><thead><tr><th>Quando</th><th>O que fazer</th><th>Por quê</th></tr></thead><tbody id="mant"></tbody></table></div>
+          <div class="vids" id="v-mant" style="margin-top:16px"></div>
+        </div>
+      </div>
+      <p class="tipbar">Os vídeos são de canais brasileiros do YouTube. A PRIME 3D não é autora dos vídeos; em caso de dúvida, siga o manual que acompanha a impressora ou fale com a gente.</p>
+    </div>
+  </section>
+</main>

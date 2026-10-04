@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suporte · PRIME 3D Tecnologia</title>
+<meta name="description" content="Central de suporte da PRIME 3D: vídeos brasileiros de instalação, uso do Bambu Studio, problemas comuns e manutenção de impressoras Bambu Lab.">
+<meta property="og:title" content="Suporte · PRIME 3D Tecnologia">
+<meta property="og:description" content="Central de suporte da PRIME 3D: vídeos brasileiros de instalação, uso do Bambu Studio, problemas comuns e manutenção de impressoras Bambu Lab.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0d0e10">
+<link rel="icon" href="img/logo-mark-t.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Michroma&display=swap">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body data-pagina="suporte">
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="PRIME 3D, início"><img src="img/logo-full-t.png" alt="PRIME 3D"></a>
+    <nav aria-label="Páginas">
+      <a href="index.html" data-aba="inicio">Início</a>
+      <a href="impressoras.html" data-aba="impressoras">Impressoras</a>
+      <a href="suporte.html" data-aba="suporte" aria-current="page">Suporte</a>
+      <a href="orcamento.html" data-aba="orcamento">Orçamento</a>
+    </nav>
+    <a class="btn pri sm zaplink" href="https://wa.me/5519984197243" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>WhatsApp</a>
+  </div>
+</header>
+
+<div class="phead">
+  <div class="wrap">
+    <div class="kick">Central de suporte</div>
+    <h1>Vídeos em português para instalar, usar e resolver</h1>
+    <p>Selecionamos vídeos de criadores brasileiros. Escolha a aba e o assunto.</p>
+  </div>
+</div>
+
+<main>
+  <section id="suporte">
+    <div class="wrap">
+      <div class="tabs" role="tablist" aria-label="Central de suporte">
+        <button type="button" role="tab" id="t-inst" aria-controls="p-inst" aria-selected="true">Instalação</button>
+        <button type="button" role="tab" id="t-sup" aria-controls="p-sup" aria-selected="false" tabindex="-1">Suporte</button>
+        <button type="button" role="tab" id="t-prob" aria-controls="p-prob" aria-selected="false" tabindex="-1">Problemas comuns e dicas</button>
+      </div>
+
+      <div role="tabpanel" id="p-inst" aria-labelledby="t-inst">
+        <div class="chips" id="inst-chips" role="group" aria-label="Escolha o modelo"></div>
+        <div id="inst"></div>
+      </div>
+
+      <div role="tabpanel" id="p-sup" aria-labelledby="t-sup" hidden>
+        <div id="sup"></div>
+      </div>
+
+      <div role="tabpanel" id="p-prob" aria-labelledby="t-prob" hidden>
+        <div class="grp">
+          <h3>Problemas comuns</h3>
+          <p>Causa mais provável e solução em ordem: tente o primeiro passo antes do próximo.</p>
+          <div class="probs" id="probs"></div>
+        </div>
+        <div class="grp">
+          <h3>Gaste menos filamento</h3>
+          <p>O desperdício aparece na troca de cor: a máquina expulsa a cor anterior do bico (a purga). Dá para reduzir bastante.</p>
+          <div class="waste">
+            <div class="panel">
+              <h4>Mesma peça, máquinas diferentes</h4>
+              <p>Teste do fabricante: dinossauro de 6 cores. Descarte de purga em gramas.</p>
+              <div class="bars" id="bars"></div>
+              <div class="cap">Fonte: página oficial da H2C (bambulab.com). Com um bico (H2S), toda troca de cor gera purga; com dois bicos (H2D, X2D), parte das trocas não gera; com o Vortek (H2C), cada cor pode ter o seu bico.</div>
+            </div>
+            <div class="panel">
+              <h4>8 ajustes que reduzem o descarte</h4>
+              <p>No Bambu Studio, gratuitos e válidos para qualquer modelo com AMS.</p>
+              <ul class="how" id="how"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="grp">
+          <h3>Manutenção de rotina</h3>
+          <p>Frequências de referência para uso normal. Quem imprime todo dia deve encurtar os intervalos.</p>
+          <div class="tbl"><table><thead><tr><th>Quando</th><th>O que fazer</th><th>Por quê</th></tr></thead><tbody id="mant"></tbody></table></div>
+          <div class="vids" id="v-mant" style="margin-top:16px"></div>
+        </div>
+      </div>
+      <p class="tipbar">Os vídeos são de canais brasileiros do YouTube. A PRIME 3D não é autora dos vídeos; em caso de dúvida, siga o manual que acompanha a impressora ou fale com a gente.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-full-t.png" alt="PRIME 3D">
+    <p>PRIME 3D TECNOLOGIA LTDA · Vinhedo, SP. Imagens meramente ilustrativas; especificações conforme informações públicas do fabricante. Bambu Lab é marca de seu respectivo titular; a PRIME 3D é revenda e não é a fabricante.</p>
+    <div class="ct">WhatsApp<br><a class="zaplink" href="https://wa.me/5519984197243" target="_blank" rel="noopener">(19) 98419-7243</a></div>
+  </div>
+</footer>
+
+<a class="fab zaplink" href="https://wa.me/5519984197243" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></a>
+
+<dialog id="player" aria-label="Vídeo">
+  <div class="vh"><b id="pl-t"></b><button type="button" id="pl-x">Fechar</button></div>
+  <div class="fr" id="pl-f"></div>
+  <div class="vf">Não abriu? <a id="pl-yt" href="#" target="_blank" rel="noopener">Assistir no YouTube</a></div>
+</dialog>
+
+<script src="js/site.js"></script>
+</body>
+</html>

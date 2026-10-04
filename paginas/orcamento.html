@@ -1,0 +1,39 @@
+<!-- titulo: Orçamento | descricao: Peça seu orçamento de impressora 3D Bambu Lab pelo WhatsApp da PRIME 3D: (19) 98419-7243. | aba: orcamento | scripts: dados.js site.js -->
+<div class="phead">
+  <div class="wrap">
+    <div class="kick">Orçamento</div>
+    <h1>Peça seu orçamento pelo WhatsApp</h1>
+    <p>Preencha o que souber. Ao tocar em enviar, o WhatsApp abre com a mensagem pronta para a PRIME 3D.</p>
+  </div>
+</div>
+
+<main>
+  <section id="orcamento">
+    <div class="wrap">
+      <div class="orc">
+        <form id="form" novalidate>
+          <div class="f"><label for="o-nome">Seu nome</label><input id="o-nome" name="nome" autocomplete="name" required><span class="err" id="e-nome" hidden>Digite seu nome para enviarmos a mensagem.</span></div>
+          <div class="f"><label for="o-cidade">Cidade / UF</label><input id="o-cidade" name="cidade" autocomplete="address-level2" placeholder="Ex.: Campinas / SP"></div>
+          <div class="f"><label for="o-modelo">Impressora</label><select id="o-modelo" name="modelo"></select></div>
+          <div class="f"><label for="o-qtd">Quantidade</label><input id="o-qtd" name="qtd" type="number" min="1" value="1" inputmode="numeric"></div>
+          <div class="f w"><label for="o-uso">Para que vai usar?</label><select id="o-uso" name="uso">
+            <option>Hobby e projetos pessoais</option><option>Fazer peças para vender</option><option>Uso na empresa (protótipos, peças, gabaritos)</option><option>Escola, laboratório ou maker space</option><option>Gravação e corte a laser</option><option>Ainda não sei</option>
+          </select></div>
+          <div class="f w"><label for="o-msg">Mensagem (opcional)</label><textarea id="o-msg" name="msg" placeholder="Conte o que pretende imprimir, prazos ou dúvidas."></textarea></div>
+          <div class="send">
+            <a class="btn pri" id="enviar" href="https://wa.me/5519984197243" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+            <small>Seus dados vão apenas para a conversa no WhatsApp. Este site não guarda nenhuma informação.</small>
+          </div>
+        </form>
+        <aside class="zap">
+          <div class="kick">Atendimento</div>
+          <h3>Prefere chamar direto?</h3>
+          <div class="num">(19) 98419-7243</div>
+          <p>WhatsApp da PRIME 3D. No computador, aponte a câmera do celular para o código.</p>
+          <div class="qr"><img src="img/qr-whatsapp.svg" alt="QR code do WhatsApp da PRIME 3D"></div>
+          <a class="btn pri zaplink" href="https://wa.me/5519984197243" target="_blank" rel="noopener">Abrir conversa</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>

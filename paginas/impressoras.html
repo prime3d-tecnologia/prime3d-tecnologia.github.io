@@ -1,0 +1,23 @@
+<!-- titulo: Impressoras | descricao: Catálogo das 14 impressoras 3D Bambu Lab da PRIME 3D, da A1 mini à H2C, com ficha resumida e orçamento pelo WhatsApp. | aba: impressoras | scripts: dados.js site.js -->
+<div class="phead">
+  <div class="wrap">
+    <div class="kick">Catálogo</div>
+    <h1>Escolha a sua impressora</h1>
+    <p>Da mais simples à mais completa. Toque em uma série para filtrar, ou veja todas abaixo. Os valores são passados no orçamento.</p>
+  </div>
+</div>
+
+<main>
+  <section id="impressoras">
+    <div class="wrap">
+      <div class="series" role="group" aria-label="Filtrar por série">
+        <button type="button" id="s-A" data-s="A" aria-pressed="false"><span class="l">SÉRIE A</span><b>Entrada</b><span>Abertas, fáceis e silenciosas. Para começar e para PLA, PETG e TPU.</span></button>
+        <button type="button" id="s-P" data-s="P" aria-pressed="false"><span class="l">SÉRIE P</span><b>Produção</b><span>Fechadas e confiáveis. Imprimem ABS e ASA e rodam o dia inteiro.</span></button>
+        <button type="button" id="s-X" data-s="X" aria-pressed="false"><span class="l">SÉRIE X</span><b>Premium compacta</b><span>Bico duplo e câmara aquecida em tamanho de mesa.</span></button>
+        <button type="button" id="s-H" data-s="H" aria-pressed="false"><span class="l">SÉRIE H</span><b>Profissional</b><span>Grandes, 350 °C, laser opcional e até 7 bicos na H2C.</span></button>
+      </div>
+      <div class="filtinfo" id="filtinfo"><span id="filttxt">Mostrando as 14 impressoras, da mais simples à mais completa.</span><button type="button" id="limpar" hidden>Mostrar todas</button></div>
+      <div class="cat" id="cat"></div>
+    </div>
+  </section>
+</main>

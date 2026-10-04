@@ -199,7 +199,9 @@ $('#pl-x').addEventListener('click', fechar);
 dlg.addEventListener('close', () => { $('#pl-f').innerHTML = ''; });
 dlg.addEventListener('click', e => { if (e.target === dlg) fechar(); });
 
-// ------------------------------------------------------------ catálogo
+// ------------------------------------------------------------ catálogo (impressoras.html)
+const hash = location.hash.slice(1);
+if ($('#cat')) {
 $('#cat').innerHTML = MODELOS.map(m => {
   const n = m.numeros;
   return `<article class="card" data-s="${m.serie}" id="m-${m.id}">
@@ -221,8 +223,8 @@ $('#cat').innerHTML = MODELOS.map(m => {
         <div><b>Limites</b><ul>${m.limites.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
       </div></details>
       <div class="act">
-        <a class="btn pri sm" href="#orcamento" data-orc="${m.id}">Pedir orçamento</a>
-        <a class="btn sec sm" href="#suporte" data-inst="${PLAT_INST[m.plat]}">Instalação</a>
+        <a class="btn pri sm" href="orcamento.html#${m.id}">Pedir orçamento</a>
+        <a class="btn sec sm" href="suporte.html#i-${PLAT_INST[m.plat]}">Instalação</a>
       </div>
     </div>
   </article>`;
@@ -238,8 +240,12 @@ function filtrar(s) {
 }
 sbtn.forEach(b => b.addEventListener('click', () => filtrar(b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.s)));
 $('#limpar').addEventListener('click', () => filtrar(null));
+const sh = hash.match(/^serie-([APXH])$/);
+if (sh) filtrar(sh[1]);
+}
 
-// ------------------------------------------------------------ suporte: abas
+// ------------------------------------------------------------ suporte: abas (suporte.html)
+if ($('#inst')) {
 const tabs = [...document.querySelectorAll('[role=tab]')];
 function aba(id, foco) {
   tabs.forEach(t => {
@@ -292,15 +298,14 @@ $('#how').innerHTML = HOW.map(([k, h, p, path]) => `<li><span class="k">${k}</sp
 $('#mant').innerHTML = MANT.map(([q, o, p]) => `<tr><td class="q">${q}</td><td>${o}</td><td class="m">${p}</td></tr>`).join('');
 $('#v-mant').innerHTML = ['1YJogyVEcbw', '250pS8nytxE', 'c7cOajLTJJQ', 'uHTblaOWorE'].map(x => vid(x)).join('');
 
-// atalhos do catálogo
-document.addEventListener('click', e => {
-  const o = e.target.closest('[data-orc]');
-  if (o) { $('#o-modelo').value = o.dataset.orc; atualiza(); }
-  const i = e.target.closest('[data-inst]');
-  if (i) { aba('t-inst'); inst(i.dataset.inst); }
-});
+// abre a aba certa pelo endereço: #instalacao, #ajuda, #problemas ou #i-<modelo>
+const H = { instalacao: 't-inst', ajuda: 't-sup', problemas: 't-prob' };
+if (H[hash]) aba(H[hash]);
+if (hash.startsWith('i-')) { aba('t-inst'); inst(hash.slice(2)); }
+}
 
-// ------------------------------------------------------------ orçamento
+// ------------------------------------------------------------ orçamento (orcamento.html)
+if ($('#form')) {
 $('#o-modelo').innerHTML = '<option value="">Ainda não sei, quero ajuda para escolher</option>' +
   MODELOS.map(m => `<option value="${m.id}">${m.nome}</option>`).join('');
 const enviar = $('#enviar');
@@ -324,13 +329,10 @@ $('#form').addEventListener('submit', e => e.preventDefault());
 enviar.addEventListener('click', e => {
   if (!$('#o-nome').value.trim()) { e.preventDefault(); $('#e-nome').hidden = false; $('#o-nome').focus(); }
 });
+if (MODELOS.some(m => m.id === hash)) $('#o-modelo').value = hash;
 atualiza();
+}
 
 // links diretos com mensagem padrão
 const padrao = encodeURIComponent('Olá, PRIME 3D! Vim pelo site e quero saber mais sobre as impressoras.');
 document.querySelectorAll('a.zaplink').forEach(a => { a.href = `https://wa.me/${ZAP}?text=${padrao}`; });
-
-// abre a aba certa por endereço (#instalacao, #ajuda, #problemas)
-const H = { instalacao: 't-inst', ajuda: 't-sup', problemas: 't-prob' };
-const h = location.hash.slice(1);
-if (H[h]) { aba(H[h]); document.getElementById('suporte').scrollIntoView(); }
