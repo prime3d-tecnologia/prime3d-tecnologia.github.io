@@ -16,7 +16,7 @@ PLAT.a1m = {
   secoes: [
     ['Corpo', [
       ['Tecnologia', 'FDM – fabricação por filamento fundido'],
-      ['Volume de impressão', '180 × 180 × 180 mm'],
+      ['Volume de impressão (maior peça)', '180 × 180 × 180 mm'],
       ['Arquitetura', 'Aberta; mesa que se move para frente e para trás (eixo Y, "bed slinger")'],
       ['Chassi', 'Aço + alumínio extrudado'],
     ]],
@@ -72,8 +72,8 @@ PLAT.a1m = {
       ['Sistemas', 'Windows e macOS'],
     ]],
     ['Dimensões', [
-      ['Medidas (L × P × A)', '347 × 315 × 365 mm'],
-      ['Peso líquido', '5,5 kg'],
+      ['Medidas da impressora (L × P × A)', '347 × 315 × 365 mm'],
+      ['Peso líquido da impressora', '5,5 kg'],
     ]],
     ['Recursos e automação', [
       ['Calibração', 'Totalmente automática: nivelamento, compensação de vibração e de fluxo'],
@@ -88,7 +88,7 @@ PLAT.a1 = {
   secoes: [
     ['Corpo', [
       ['Tecnologia', 'FDM – fabricação por filamento fundido'],
-      ['Volume de impressão', '256 × 256 × 256 mm'],
+      ['Volume de impressão (maior peça)', '256 × 256 × 256 mm'],
       ['Arquitetura', 'Aberta; mesa que se move para frente e para trás (eixo Y, "bed slinger")'],
       ['Chassi', 'Aço + alumínio extrudado'],
     ]],
@@ -143,8 +143,8 @@ PLAT.a1 = {
       ['Sistemas', 'Windows e macOS'],
     ]],
     ['Dimensões', [
-      ['Medidas (L × P × A)', '465 × 410 × 430 mm'],
-      ['Peso líquido', '8,3 kg'],
+      ['Medidas da impressora (L × P × A)', '465 × 410 × 430 mm'],
+      ['Peso líquido da impressora', '8,3 kg'],
     ]],
     ['Recursos e automação', [
       ['Calibração', 'Totalmente automática: nivelamento, compensação de vibração e de fluxo'],
@@ -170,7 +170,7 @@ PLAT.a2l = {
   secoes: [
     ['Corpo', [
       ['Tecnologia', 'FDM – fabricação por filamento fundido'],
-      ['Volume de impressão', '330 × 320 × 325 mm (105% mais espaço que a classe de 256 mm)'],
+      ['Volume de impressão (maior peça)', '330 × 320 × 325 mm (105% mais espaço que a classe de 256 mm)'],
       ['Arquitetura', 'Aberta; mesa que se move no eixo Y ("bed slinger")'],
       ['Chassi / carcaça', 'Alumínio e aço / plástico'],
     ]],
@@ -228,8 +228,8 @@ PLAT.a2l = {
       ['Privacidade', 'Nuvem Bambu ou modo somente rede local (LAN)'],
     ]],
     ['Dimensões', [
-      ['Medidas (L × P × A)', '544 × 529 × 505 mm'],
-      ['Peso líquido', '12,8 kg'],
+      ['Medidas da impressora (L × P × A)', '544 × 529 × 505 mm'],
+      ['Peso líquido da impressora', '12,8 kg'],
     ]],
     ['Recursos e automação', [
       ['Estabilidade', 'Compensação adaptativa de vibração (recalculada camada a camada) + 2 amortecedores granulares no pórtico'],
@@ -246,7 +246,7 @@ PLAT.p1s = {
   secoes: [
     ['Corpo', [
       ['Tecnologia', 'FDM – fabricação por filamento fundido'],
-      ['Volume de impressão', '256 × 256 × 256 mm (o Bambu Studio limita a 250 mm de altura por padrão)'],
+      ['Volume de impressão (maior peça)', '256 × 256 × 256 mm (o Bambu Studio limita a 250 mm de altura por padrão)'],
       ['Arquitetura', 'CoreXY fechada: a mesa só sobe e desce, o cabeçote corre em X e Y'],
       ['Carcaça', 'Fechada, plástico e vidro'],
     ]],
@@ -299,8 +299,8 @@ PLAT.p1s = {
       ['Sistemas', 'Windows e macOS'],
     ]],
     ['Dimensões', [
-      ['Medidas (L × P × A)', '389 × 389 × 458 mm'],
-      ['Peso líquido', '12,95 kg'],
+      ['Medidas da impressora (L × P × A)', '389 × 389 × 458 mm'],
+      ['Peso líquido da impressora', '12,95 kg'],
     ]],
   ],
 };
@@ -310,7 +310,7 @@ PLAT.p2s = {
   secoes: [
     ['Corpo', [
       ['Tecnologia', 'FDM – fabricação por filamento fundido'],
-      ['Volume de impressão', '256 × 256 × 256 mm'],
+      ['Volume de impressão (maior peça)', '256 × 256 × 256 mm'],
       ['Arquitetura', 'CoreXY fechada'],
       ['Chassi / carcaça', 'Plástico e aço / plástico e vidro (vidro frontal com película anti-estilhaço)'],
     ]],
@@ -367,8 +367,8 @@ PLAT.p2s = {
       ['Sistemas', 'Windows, macOS e Linux'],
     ]],
     ['Dimensões', [
-      ['Medidas (L × P × A)', '392 × 406 × 478 mm'],
-      ['Peso líquido', '14,9 kg'],
+      ['Medidas da impressora (L × P × A)', '392 × 406 × 478 mm'],
+      ['Peso líquido da impressora', '14,9 kg'],
       ['Detalhes', 'Alças de transporte integradas; base plana fácil de limpar; buffer 2-em-1 (no Combo) para alternar entre AMS e rolo externo'],
     ]],
   ],
@@ -440,8 +440,8 @@ PLAT.x2d = {
       ['Sistemas', 'Windows, macOS e Linux'],
     ]],
     ['Dimensões', [
-      ['Medidas (L × P × A)', '392 × 406 × 478 mm'],
-      ['Peso líquido', '16,25 kg'],
+      ['Medidas da impressora (L × P × A)', '392 × 406 × 478 mm'],
+      ['Peso líquido da impressora', '16,25 kg'],
     ]],
     ['Recursos e automação', [
       ['Precisão', 'Vision Encoder: precisão de 50 µm em todo o volume, compensando desgaste'],
@@ -487,8 +487,8 @@ const H_COMUM = (o) => [
     ['Sistemas', o.so],
   ]],
   ['Dimensões', [
-    ['Medidas (L × P × A)', '492 × 514 × 626 mm'],
-    ['Peso líquido', o.peso],
+    ['Medidas da impressora (L × P × A)', '492 × 514 × 626 mm'],
+    ['Peso líquido da impressora', o.peso],
   ]],
 ];
 
@@ -509,7 +509,7 @@ const VENT_H = 'Peça, auxiliar da peça, circulação de calor da câmara, hote
 PLAT.h2s = {
   fonte: 'bambulab.com/en/h2s/tech-specs',
   secoes: H_COMUM({
-    volume: [['Volume de impressão', '340 × 320 × 340 mm (o maior de bico único da Bambu Lab)']],
+    volume: [['Volume de impressão (maior peça)', '340 × 320 × 340 mm (o maior de bico único da Bambu Lab)']],
     arq: 'CoreXY fechada, bico único',
     cabecote: CAB_H(),
     mesa: [['Placas compatíveis', 'Textured PEI, Smooth PEI'], ['Temperatura máx. da mesa', '120 °C']],
