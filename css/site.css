@@ -282,3 +282,11 @@ a.serie-l span { color: var(--mut); font-size: 13.5px; line-height: 1.45; }
 .zap .qrs figcaption { font-size: 13px; font-weight: 800; color: var(--fg); }
 .zap .qrs figcaption a { color: var(--or2); text-decoration: none; }
 @media (max-width: 600px) { .btn.ig span { display: none; } .top .wrap > .btn.ig { margin-left: auto; } .top .wrap > .btn.ig + .btn { margin-left: 6px; } }
+
+/* preço "a partir de" no catálogo */
+.card .preco { display: grid; gap: 2px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); }
+.card .preco .ap { color: var(--mut); font-size: 12.5px; }
+.card .preco b { font-size: 24px; font-weight: 800; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.card .preco .cond { color: var(--mut); font-size: 12px; }
+.card .preco + .act { margin-top: 0; }
+.aviso-preco { color: var(--mut); font-size: 12.5px; line-height: 1.5; margin: 18px 0 0; max-width: 80ch; }

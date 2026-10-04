@@ -5,6 +5,14 @@ const yt = id => 'https://www.youtube.com/watch?v=' + id;
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+// Preço "a partir de" (à vista no Pix, sem frete), por id do modelo em dados.js. Atualizado em 04/10/2026.
+const PRECO = {
+  'a1m': 1952.07, 'a1m-combo': 3424.99, 'a1': 2995.05, 'a1-combo': 4441.50, 'a2l': 4528.63, 'a2l-combo': 6108.59,
+  'p1s-combo': 7109.10, 'p2s-combo': 9233.90, 'x2d-combo': 12499.00, 'h2s-combo': 17000.00, 'h2d-combo': 23309.10,
+  'h2dl-10w': 29699.10, 'h2dl-40w': 35854.72, 'h2c-combo': 29339.10,
+};
+const brl = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
 // Vídeos de canais brasileiros: id -> [título, canal, duração, resumo]
 const V = {
   'RBvyBNvetu0': ['A1 mini: unboxing, montagem e primeira impressão', 'UpzitoBR', '14:29', 'Abertura da caixa, montagem e a primeira peça saindo da A1 mini.'],
@@ -222,6 +230,7 @@ $('#cat').innerHTML = MODELOS.map(m => {
         <div><b>O que faz</b><ul>${m.faz.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
         <div><b>Limites</b><ul>${m.limites.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
       </div></details>
+      ${PRECO[m.id] ? `<div class="preco"><span class="ap">a partir de</span><b>${brl(PRECO[m.id])}</b><span class="cond">à vista no Pix · frete por conta do cliente</span></div>` : ''}
       <div class="act">
         <a class="btn pri sm" href="orcamento.html#${m.id}">Pedir orçamento</a>
         <a class="btn sec sm" href="suporte.html#i-${PLAT_INST[m.plat]}">Instalação</a>
@@ -317,6 +326,7 @@ function mensagem() {
     'Nome: ' + (g('o-nome') || '-'),
     g('o-cidade') && 'Cidade: ' + g('o-cidade'),
     'Impressora: ' + (m ? 'Bambu Lab ' + m.nome : 'quero ajuda para escolher'),
+    m && PRECO[m.id] && 'Preço visto no site: a partir de ' + brl(PRECO[m.id]) + ' à vista no Pix (sem frete)',
     'Quantidade: ' + (g('o-qtd') || '1'),
     'Uso: ' + g('o-uso'),
     g('o-msg') && 'Mensagem: ' + g('o-msg'),
