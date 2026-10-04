@@ -272,3 +272,13 @@ a.serie-l b { font-size: 17px; }
 a.serie-l span { color: var(--mut); font-size: 13.5px; line-height: 1.45; }
 .series.nav { margin-bottom: 0; }
 @media (max-width: 960px) { .atalhos { grid-template-columns: 1fr; } }
+
+/* Instagram */
+.btn.ig { padding: 10px 14px; }
+.top .wrap > .btn.ig { margin-left: 6px; }
+.zap .qrs { display: flex; gap: 14px; flex-wrap: wrap; }
+.zap .qrs figure { margin: 0; display: grid; gap: 8px; justify-items: center; }
+.zap .qrs .qr { width: 150px; }
+.zap .qrs figcaption { font-size: 13px; font-weight: 800; color: var(--fg); }
+.zap .qrs figcaption a { color: var(--or2); text-decoration: none; }
+@media (max-width: 600px) { .btn.ig span { display: none; } .top .wrap > .btn.ig { margin-left: auto; } .top .wrap > .btn.ig + .btn { margin-left: 6px; } }
