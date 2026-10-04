@@ -1,27 +1,34 @@
-/* Layout: site de página única, faixas escuras da marca empilhadas; catálogo em grade de cartões; suporte em abas.
-   Tema único escuro por escolha (identidade PRIME 3D: preto + laranja). */
+/* Layout: site de página única; catálogo em grade de cartões; suporte em abas.
+   Tema claro (fundo branco) desde 04/10/2026; topo, rodapé e janela de vídeo continuam pretos por causa do logo (letras brancas). */
 :root {
-  color-scheme: dark;
-  --bg: #0d0e10;
-  --bg2: #15171b;
-  --bg3: #1d2026;
-  --line: #2a2e36;
-  --fg: #eef0f3;
-  --mut: #9aa1ad;
-  --or: #ff7a1a;
-  --or2: #ffb43c;
-  --or3: #ff4d00;
-  --ok: #4fd18b;
-  --warn: #ffb43c;
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg2: #f7f5f2;
+  --bg3: #f0ece6;
+  --line: #e4ded5;
+  --fg: #15171b;
+  --mut: #5c636e;
+  --or: #f26a0c;
+  --or2: #d9600a;
+  --or3: #e04400;
+  --ok: #1f9d5c;
+  --warn: #b86e00;
   --paper: #ffffff;
   --on-or: #1a0c02;
-  --grad: linear-gradient(90deg, var(--or2), var(--or) 55%, var(--or3));
+  --grad: linear-gradient(90deg, #ff9a1f, #ff7a1a 55%, #ff4d00);
   --f-disp: 'Michroma', 'Manrope', 'Segoe UI', sans-serif;
   --f-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
   --wrap: 1180px;
 }
+/* faixas escuras da marca */
+.top, footer, dialog {
+  color-scheme: dark;
+  --bg: #0d0e10; --bg2: #15171b; --bg3: #1d2026; --line: #2a2e36;
+  --fg: #eef0f3; --mut: #9aa1ad; --or: #ff7a1a; --or2: #ffb43c;
+  color: var(--fg);
+}
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #0d0e10; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.6 var(--f-body); }
 a { color: inherit; }
@@ -51,7 +58,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.15; letter-spacing: -.01em; text-wrap
 
 /* abertura */
 .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-.hero::before { content: ''; position: absolute; width: 760px; height: 760px; right: -240px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,26,.22), rgba(255,122,26,0) 62%); pointer-events: none; }
+.hero::before { content: ''; position: absolute; width: 760px; height: 760px; right: -240px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,26,.14), rgba(255,122,26,0) 62%); pointer-events: none; }
 .hero .wrap { position: relative; padding-block: 60px 40px; display: grid; gap: 40px; }
 .hero h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; margin: 16px 0 18px; }
 .hero p { color: var(--mut); font-size: 18.5px; max-width: 60ch; margin: 0; }
@@ -79,7 +86,7 @@ section { padding-block: 72px 16px; scroll-margin-top: 70px; }
 .series { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 22px; }
 .series button { text-align: left; font: inherit; color: inherit; background: var(--bg2); border: 1px solid var(--line); border-radius: 14px; padding: 16px; cursor: pointer; display: grid; gap: 4px; transition: border-color .2s; }
 .series button:hover, .series button[aria-pressed="true"] { border-color: var(--or); }
-.series button[aria-pressed="true"] { background: #1c1610; }
+.series button[aria-pressed="true"] { background: #fff1e4; }
 .series .l { font: 400 10px/1.2 var(--f-disp); letter-spacing: .2em; color: var(--or); }
 .series b { font-size: 17px; }
 .series span { color: var(--mut); font-size: 13.5px; line-height: 1.45; }
@@ -198,7 +205,7 @@ form { background: var(--bg2); border: 1px solid var(--line); border-radius: 18p
 .f .err { color: #ff8a7a; font-size: 13px; }
 form .send { grid-column: 1 / -1; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 form .send small { color: var(--mut); font-size: 12.5px; flex: 1 1 220px; }
-.zap { background: linear-gradient(160deg, #1b1510, var(--bg2)); border: 1px solid rgba(255,122,26,.35); border-radius: 18px; padding: 24px; display: grid; gap: 16px; justify-items: start; }
+.zap { background: linear-gradient(160deg, #fff4ea, var(--bg2)); border: 1px solid rgba(255,122,26,.35); border-radius: 18px; padding: 24px; display: grid; gap: 16px; justify-items: start; }
 .zap h3 { font-size: 22px; font-weight: 800; }
 .zap .num { font-size: 28px; font-weight: 800; letter-spacing: .01em; font-variant-numeric: tabular-nums; }
 .zap p { margin: 0; color: var(--mut); font-size: 15px; }
@@ -215,7 +222,7 @@ dialog .fr { aspect-ratio: 16 / 9; background: #000; }
 dialog iframe { width: 100%; height: 100%; border: 0; display: block; }
 dialog .vf { padding: 10px 14px; font-size: 13.5px; color: var(--mut); }
 
-footer { margin-top: 72px; border-top: 1px solid var(--line); background: var(--bg2); }
+footer { margin-top: 72px; border-top: 1px solid var(--line); background: #0d0e10; }
 footer .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 24px 40px; align-items: center; padding-block: 30px; }
 footer img { height: 54px; display: block; }
 footer p { margin: 0; color: var(--mut); font-size: 13.5px; max-width: 70ch; }
@@ -252,7 +259,7 @@ footer .ct a { text-decoration: none; color: var(--or2); }
 
 /* páginas internas */
 .phead { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-.phead::before { content: ''; position: absolute; width: 620px; height: 620px; right: -220px; top: -320px; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,26,.2), rgba(255,122,26,0) 62%); pointer-events: none; }
+.phead::before { content: ''; position: absolute; width: 620px; height: 620px; right: -220px; top: -320px; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,26,.14), rgba(255,122,26,0) 62%); pointer-events: none; }
 .phead .wrap { position: relative; padding-block: 44px 34px; display: grid; gap: 10px; }
 .phead h1 { font-size: clamp(32px, 4.6vw, 52px); font-weight: 800; }
 .phead p { color: var(--mut); font-size: 17.5px; max-width: 64ch; margin: 0; }
@@ -339,3 +346,10 @@ footer .ct a[href^="mailto"] { word-break: break-all; }
 .card .preco .ln em { font-style: normal; color: var(--mut); }
 .card .preco .ln svg { width: 16px; height: 16px; fill: none; stroke: var(--or); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 @media (max-width: 600px) { .pg-op { grid-template-columns: 1fr; } .pagbox { padding: 20px; } }
+
+/* tema claro: molduras e sombras */
+.lineup figure { border: 1px solid var(--line); box-shadow: 0 6px 18px rgba(20,16,10,.06); }
+.card { box-shadow: 0 1px 2px rgba(20,16,10,.05), 0 6px 18px rgba(20,16,10,.05); }
+.card .ph { border-bottom: 1px solid var(--line); }
+.card .ph .lvl { background: #15171b; color: #fff; }
+.pg-op .op { background: #fff; }
