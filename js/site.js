@@ -7,7 +7,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 
 // Preço "a partir de" (à vista no Pix, sem frete), por id do modelo em dados.js. Atualizado em 04/10/2026.
 const PRECO = {
-  'a1m': 1952.07, 'a1m-combo': 3424.99, 'a1': 2995.05, 'a1-combo': 4441.50, 'a2l': 4528.63, 'a2l-combo': 6108.59,
+  'a1m': 1952.07, 'a1m-combo': 3424.99, 'a1': 3169.00, 'a1-combo': 4511.55, 'a2l': 4528.63, 'a2l-combo': 6108.59,
   'p1s-combo': 7109.10, 'p2s-combo': 9233.90, 'x2d-combo': 12499.00, 'h2s-combo': 17000.00, 'h2d-combo': 23309.10,
   'h2dl-10w': 29699.10, 'h2dl-40w': 35854.72, 'h2c-combo': 29339.10,
 };
