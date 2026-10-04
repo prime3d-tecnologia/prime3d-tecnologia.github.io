@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Suporte · PRIME 3D Tecnologia</title>
-<meta name="description" content="Central de suporte da PRIME 3D: vídeos brasileiros de instalação, uso do Bambu Studio, problemas comuns e manutenção de impressoras Bambu Lab.">
-<meta property="og:title" content="Suporte · PRIME 3D Tecnologia">
-<meta property="og:description" content="Central de suporte da PRIME 3D: vídeos brasileiros de instalação, uso do Bambu Studio, problemas comuns e manutenção de impressoras Bambu Lab.">
+<title>Qual impressora 3D comprar · PRIME 3D Tecnologia</title>
+<meta name="description" content="Responda 7 perguntas rápidas e descubra qual impressora 3D Bambu Lab é a ideal para você, com foto, preço e link para o modelo.">
+<meta property="og:title" content="Qual impressora 3D comprar · PRIME 3D Tecnologia">
+<meta property="og:description" content="Responda 7 perguntas rápidas e descubra qual impressora 3D Bambu Lab é a ideal para você, com foto, preço e link para o modelo.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0d0e10">
 <link rel="icon" href="img/logo-mark-t.png">
@@ -15,15 +15,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Michroma&display=swap">
 <link rel="stylesheet" href="css/site.css">
 </head>
-<body data-pagina="suporte">
+<body data-pagina="qual-impressora">
 <header class="top">
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="PRIME 3D, início"><img src="img/logo-full-t.png" alt="PRIME 3D"></a>
     <nav aria-label="Páginas">
       <a href="index.html" data-aba="inicio">Início</a>
       <a href="impressoras.html" data-aba="impressoras">Impressoras</a>
-      <a href="qual-impressora.html" data-aba="qual"><span>Qual <span class="nv-lg">impressora 3D </span>comprar</span></a>
-      <a href="suporte.html" data-aba="suporte" aria-current="page">Suporte</a>
+      <a href="qual-impressora.html" data-aba="qual" aria-current="page"><span>Qual <span class="nv-lg">impressora 3D </span>comprar</span></a>
+      <a href="suporte.html" data-aba="suporte">Suporte</a>
       <a href="orcamento.html" data-aba="orcamento">Orçamento</a>
     </nav>
     <a class="btn sec sm ig" href="https://www.instagram.com/prime3dtec" target="_blank" rel="noopener" aria-label="Instagram da PRIME 3D"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg><span>Instagram</span></a>
@@ -33,61 +33,30 @@
 
 <div class="phead">
   <div class="wrap">
-    <div class="kick">Central de suporte</div>
-    <h1>Vídeos em português para instalar, usar e resolver</h1>
-    <p>Selecionamos vídeos de criadores brasileiros. Escolha a aba e o assunto.</p>
+    <div class="kick">Assistente de compra</div>
+    <h1>Qual impressora 3D comprar?</h1>
+    <p>Responda 7 perguntas rápidas sobre o que você quer imprimir. No final, indicamos a impressora certa para você, com foto, preço e o link para ver todos os detalhes.</p>
   </div>
 </div>
 
 <main>
-  <section id="suporte">
+  <section class="qz-sec">
     <div class="wrap">
-      <div class="tabs" role="tablist" aria-label="Central de suporte">
-        <button type="button" role="tab" id="t-inst" aria-controls="p-inst" aria-selected="true">Instalação</button>
-        <button type="button" role="tab" id="t-sup" aria-controls="p-sup" aria-selected="false" tabindex="-1">Suporte</button>
-        <button type="button" role="tab" id="t-prob" aria-controls="p-prob" aria-selected="false" tabindex="-1">Problemas comuns e dicas</button>
-      </div>
-
-      <div role="tabpanel" id="p-inst" aria-labelledby="t-inst">
-        <div class="chips" id="inst-chips" role="group" aria-label="Escolha o modelo"></div>
-        <div id="inst"></div>
-      </div>
-
-      <div role="tabpanel" id="p-sup" aria-labelledby="t-sup" hidden>
-        <div id="sup"></div>
-      </div>
-
-      <div role="tabpanel" id="p-prob" aria-labelledby="t-prob" hidden>
-        <div class="grp">
-          <h3>Problemas comuns</h3>
-          <p>Causa mais provável e solução em ordem: tente o primeiro passo antes do próximo.</p>
-          <div class="probs" id="probs"></div>
+      <div class="qz" id="qz" aria-live="polite">
+        <div class="qz-top">
+          <div class="qz-step" id="qz-step">Pergunta 1 de 7</div>
+          <div class="qz-bar" aria-hidden="true"><i id="qz-fill"></i></div>
         </div>
-        <div class="grp">
-          <h3>Gaste menos filamento</h3>
-          <p>O desperdício aparece na troca de cor: a máquina expulsa a cor anterior do bico (a purga). Dá para reduzir bastante.</p>
-          <div class="waste">
-            <div class="panel">
-              <h4>Mesma peça, máquinas diferentes</h4>
-              <p>Teste do fabricante: dinossauro de 6 cores. Descarte de purga em gramas.</p>
-              <div class="bars" id="bars"></div>
-              <div class="cap">Fonte: página oficial da H2C (bambulab.com). Com um bico (H2S), toda troca de cor gera purga; com dois bicos (H2D, X2D), parte das trocas não gera; com o Vortek (H2C), cada cor pode ter o seu bico.</div>
-            </div>
-            <div class="panel">
-              <h4>8 ajustes que reduzem o descarte</h4>
-              <p>No Bambu Studio, gratuitos e válidos para qualquer modelo com AMS.</p>
-              <ul class="how" id="how"></ul>
-            </div>
-          </div>
-        </div>
-        <div class="grp">
-          <h3>Manutenção de rotina</h3>
-          <p>Frequências de referência para uso normal. Quem imprime todo dia deve encurtar os intervalos.</p>
-          <div class="tbl"><table><thead><tr><th>Quando</th><th>O que fazer</th><th>Por quê</th></tr></thead><tbody id="mant"></tbody></table></div>
-          <div class="vids" id="v-mant" style="margin-top:16px"></div>
+        <div id="qz-corpo"></div>
+        <div class="qz-nav">
+          <button type="button" class="btn sec sm" id="qz-voltar" hidden>← Voltar</button>
+          <span class="qz-dica">Toque em uma resposta para seguir.</span>
         </div>
       </div>
-      <p class="tipbar">Os vídeos são de canais brasileiros do YouTube. A PRIME 3D não é autora dos vídeos; em caso de dúvida, siga o manual que acompanha a impressora ou fale com a gente.</p>
+
+      <div class="qr" id="qr" hidden></div>
+
+      <p class="qz-aviso">A indicação é automática, feita a partir das suas respostas e das especificações oficiais da Bambu Lab. Na dúvida, fale com a gente no WhatsApp <b>(19) 98419-7243</b>: confirmamos o modelo, a disponibilidade e o prazo antes da compra.</p>
     </div>
   </section>
 </main>
@@ -108,6 +77,8 @@
   <div class="vf">Não abriu? <a id="pl-yt" href="#" target="_blank" rel="noopener">Assistir no YouTube</a></div>
 </dialog>
 
+<script src="js/dados.js"></script>
 <script src="js/site.js"></script>
+<script src="js/qual.js"></script>
 </body>
 </html>

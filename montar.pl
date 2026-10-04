@@ -13,7 +13,7 @@ my $cab = ler('partes/cabecalho.html');
 my $rod = ler('partes/rodape.html');
 my $fontes = qq{<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght\@400;500;600;700;800&family=Michroma&display=swap">\n<link rel="stylesheet" href="css/site.css">};
 
-for my $pg (qw(inicio impressoras suporte orcamento trocas)) {
+for my $pg (qw(inicio impressoras qual-impressora suporte orcamento trocas)) {
   my $c = ler("paginas/$pg.html");
   my ($meta) = $c =~ /^<!--(.*?)-->\n/s or die "$pg: sem cabeçalho de metadados";
   $c =~ s/^<!--.*?-->\n//s;

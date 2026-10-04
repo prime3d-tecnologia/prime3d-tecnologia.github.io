@@ -265,6 +265,9 @@ sbtn.forEach(b => b.addEventListener('click', () => filtrar(b.getAttribute('aria
 $('#limpar').addEventListener('click', () => filtrar(null));
 const sh = hash.match(/^serie-([APXH])$/);
 if (sh) filtrar(sh[1]);
+// link direto para um modelo (ex.: impressoras.html#m-a1-combo, usado pelo teste "Qual impressora 3D comprar")
+const alvo = hash.startsWith('m-') && document.getElementById(hash);
+if (alvo) addEventListener('load', () => alvo.scrollIntoView({ block: 'start', behavior: 'instant' }));
 }
 
 // ------------------------------------------------------------ suporte: abas (suporte.html)
