@@ -207,6 +207,18 @@ $('#pl-x').addEventListener('click', fechar);
 dlg.addEventListener('close', () => { $('#pl-f').innerHTML = ''; });
 dlg.addEventListener('click', e => { if (e.target === dlg) fechar(); });
 
+// medidas oficiais (L × P × A) e peso, lidas da ficha técnica em dados.js; mm -> cm
+const cm = s => s.replace(/(\d+(?:[.,]\d+)?)/g, n => (parseFloat(n.replace(',', '.')) / 10).toLocaleString('pt-BR', { maximumFractionDigits: 1 })).replace(' mm', ' cm');
+function medidas(m) {
+  const p = PLAT[m.plat], sec = p && p.secoes.find(s => s[0] === 'Dimensões');
+  const v = k => sec && (sec[1].find(r => r[0].startsWith(k)) || [])[1];
+  const out = [];
+  if (v('Medidas')) out.push(['Medidas', cm(v('Medidas')) + ' (L × P × A)']);
+  if (v('Peso')) out.push(['Peso', v('Peso')]);
+  if (m.ams === 'ams2pro') { const r = AMS.ams2pro.linhas.find(x => x[0].startsWith('Medidas'))[1].split(';'); out.push(['AMS 2 Pro', cm(r[0]) + ' · ' + r[1].trim()]); }
+  return out;
+}
+
 // ------------------------------------------------------------ catálogo (impressoras.html)
 const hash = location.hash.slice(1);
 if ($('#cat')) {
@@ -224,6 +236,7 @@ $('#cat').innerHTML = MODELOS.map(m => {
         <div><dt>Bicos</dt><dd>${n.bicos}</dd></div>
         <div><dt>Velocidade</dt><dd>${n.vel}</dd></div>
         <div><dt>Materiais</dt><dd>${esc(n.materiais.replace("*", " (com bico endurecido)"))}</dd></div>
+        ${medidas(m).map(([k, x]) => `<div><dt>${k}</dt><dd>${x}</dd></div>`).join('')}
       </dl>
       <details><summary>Para quem é, o que faz e limites</summary><div class="in">
         <div><b>Para quem:</b> ${esc(m.paraQuem)}</div>
