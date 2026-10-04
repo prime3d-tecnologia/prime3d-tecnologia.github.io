@@ -11,6 +11,10 @@ const PRECO = {
   'p1s-combo': 7109.10, 'p2s-combo': 9233.90, 'x2d-combo': 12499.00, 'h2s-combo': 17000.00, 'h2d-combo': 23309.10,
   'h2dl-10w': 29699.10, 'h2dl-40w': 35854.72, 'h2c-combo': 29339.10,
 };
+// Página da PRIME 3D no Mercado Livre (rodapé e quadro de pagamento do catálogo). Vazio = links escondidos.
+// Em 04/10/2026 a conta ainda não tinha anúncios ativos; quando tiver, use: 'https://www.mercadolivre.com.br/perfil/FEDFGACHB73669'
+const ML = '';
+if (ML) document.querySelectorAll('[data-ml]').forEach(e => { e.hidden = false; if (e.tagName === 'A') e.href = ML; });
 const brl = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const IC = { cartao: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 10h18M7 15h3"/></svg>', frete: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3.5V16h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>' };
 
