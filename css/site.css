@@ -318,3 +318,24 @@ footer p a, .aviso-preco a { color: var(--or2); }
 .hero .pag-linha { margin-top: 14px; }
 .zap .pag-linha { color: var(--fg); }
 footer .ct a[href^="mailto"] { word-break: break-all; }
+
+/* quadro de formas de pagamento (catálogo) */
+.pagbox { background: var(--bg2); border: 1px solid var(--line); border-radius: 20px; padding: 26px; margin-bottom: 26px; display: grid; gap: 14px; justify-items: start; }
+.pagbox h2 { font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; }
+.pagbox svg { width: 20px; height: 20px; fill: none; stroke: var(--or); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.pagbox svg.f { fill: currentColor; stroke: none; }
+.pg-op { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; }
+.pg-op .op { position: relative; background: var(--bg3); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: grid; gap: 6px; align-content: start; }
+.pg-op .op.pix { border: 2px solid var(--or); }
+.pg-op .op svg { width: 28px; height: 28px; }
+.pg-op .op b { font-size: 21px; font-weight: 800; }
+.pg-op .op span { color: var(--mut); font-size: 14.5px; line-height: 1.5; }
+.pg-op .tag { position: absolute; top: 16px; right: 16px; background: var(--or); color: #1a0d02 !important; font-size: 12px !important; font-weight: 800; padding: 5px 11px; border-radius: 999px; }
+.pg-ch { display: flex; flex-wrap: wrap; gap: 8px; }
+.pg-ch span { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 700; background: var(--bg3); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; }
+.pg-ch svg { width: 17px; height: 17px; }
+.card .preco b small { font-size: 13px; font-weight: 800; color: var(--or); margin-left: 6px; }
+.card .preco .ln { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--fg); }
+.card .preco .ln em { font-style: normal; color: var(--mut); }
+.card .preco .ln svg { width: 16px; height: 16px; fill: none; stroke: var(--or); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+@media (max-width: 600px) { .pg-op { grid-template-columns: 1fr; } .pagbox { padding: 20px; } }

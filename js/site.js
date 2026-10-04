@@ -12,6 +12,7 @@ const PRECO = {
   'h2dl-10w': 29699.10, 'h2dl-40w': 35854.72, 'h2c-combo': 29339.10,
 };
 const brl = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const IC = { cartao: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 10h18M7 15h3"/></svg>', frete: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3.5V16h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>' };
 
 // Vídeos de canais brasileiros: id -> [título, canal, duração, resumo]
 const V = {
@@ -243,7 +244,7 @@ $('#cat').innerHTML = MODELOS.map(m => {
         <div><b>O que faz</b><ul>${m.faz.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
         <div><b>Limites</b><ul>${m.limites.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
       </div></details>
-      ${PRECO[m.id] ? `<div class="preco"><span class="ap">a partir de</span><b>${brl(PRECO[m.id])}</b><span class="cond">à vista no Pix · ou parcelado no cartão de crédito (consulte a taxa) · frete à parte</span></div>` : ''}
+      ${PRECO[m.id] ? `<div class="preco"><span class="ap">a partir de</span><b>${brl(PRECO[m.id])}<small>no Pix</small></b><span class="ln">${IC.cartao}ou em até 12x no cartão <em>· consulte a taxa</em></span><span class="ln">${IC.frete}<em>Frete à parte, calculado no orçamento</em></span></div>` : ''}
       <div class="act">
         <a class="btn pri sm" href="orcamento.html#${m.id}">Pedir orçamento</a>
         <a class="btn sec sm" href="suporte.html#i-${PLAT_INST[m.plat]}">Instalação</a>
