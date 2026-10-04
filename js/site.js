@@ -218,7 +218,7 @@ $('#cat').innerHTML = MODELOS.map(m => {
       <div><div class="sr">${SERIE[m.serie]}</div><h3>${esc(m.nome)}</h3></div>
       <p class="fr">${esc(m.frase)}</p>
       <dl class="spec">
-        <div><dt>Tamanho máx.</dt><dd>${n.tamanho}</dd></div>
+        <div><dt>Maior peça</dt><dd>${n.tamanho}</dd></div>
         <div><dt>Cores</dt><dd>${esc(m.cores)}</dd></div>
         <div><dt>Fechada</dt><dd>${n.fechada}</dd></div>
         <div><dt>Bicos</dt><dd>${n.bicos}</dd></div>
@@ -230,7 +230,7 @@ $('#cat').innerHTML = MODELOS.map(m => {
         <div><b>O que faz</b><ul>${m.faz.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
         <div><b>Limites</b><ul>${m.limites.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
       </div></details>
-      ${PRECO[m.id] ? `<div class="preco"><span class="ap">a partir de</span><b>${brl(PRECO[m.id])}</b><span class="cond">à vista no Pix · frete por conta do cliente</span></div>` : ''}
+      ${PRECO[m.id] ? `<div class="preco"><span class="ap">a partir de</span><b>${brl(PRECO[m.id])}</b><span class="cond">à vista no Pix · ou parcelado no cartão de crédito (consulte a taxa) · frete à parte</span></div>` : ''}
       <div class="act">
         <a class="btn pri sm" href="orcamento.html#${m.id}">Pedir orçamento</a>
         <a class="btn sec sm" href="suporte.html#i-${PLAT_INST[m.plat]}">Instalação</a>
@@ -329,6 +329,7 @@ function mensagem() {
     m && PRECO[m.id] && 'Preço visto no site: a partir de ' + brl(PRECO[m.id]) + ' à vista no Pix (sem frete)',
     'Quantidade: ' + (g('o-qtd') || '1'),
     'Uso: ' + g('o-uso'),
+    'Pagamento: ' + g('o-pag'),
     g('o-msg') && 'Mensagem: ' + g('o-msg'),
   ].filter(Boolean);
   return linhas.join('\n');

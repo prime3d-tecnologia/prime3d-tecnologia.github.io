@@ -310,3 +310,11 @@ footer p a, .aviso-preco a { color: var(--or2); }
   .politica .wrap { grid-template-columns: 1fr; gap: 24px; }
   .politica .indice { position: static; }
 }
+
+/* condições de pagamento */
+.facts.pag { margin-bottom: 22px; }
+.facts.pag b { font-size: 16px; }
+.pag-linha { color: var(--mut); font-size: 14.5px; margin: 0; }
+.hero .pag-linha { margin-top: 14px; }
+.zap .pag-linha { color: var(--fg); }
+footer .ct a[href^="mailto"] { word-break: break-all; }
