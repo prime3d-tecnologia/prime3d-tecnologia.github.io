@@ -31,7 +31,8 @@ for my $pg (qw(inicio impressoras qual-impressora suporte orcamento trocas)) {
   (my $c2 = $cab) =~ s{(data-aba="$m{aba}")}{$1 aria-current="page"};
   my $scripts = join "\n", map { qq{<script src="js/$_"></script>} } split ' ', $m{scripts};
   my $head = qq{<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<title>$titulo</title>\n<meta name="description" content="$m{descricao}">\n<link rel="canonical" href="$url">\n<meta property="og:title" content="$titulo">\n<meta property="og:description" content="$m{descricao}">\n<meta property="og:type" content="website">\n<meta property="og:url" content="$url">\n<meta name="theme-color" content="#0d0e10">\n<link rel="icon" href="img/logo-mark-t.png">\n$fontes};
-  $head .= "\n$ORG" if $pg eq 'inicio';
+  # verificação do Google Search Console (04/10/2026): não remover
+  $head .= qq{\n<meta name="google-site-verification" content="YcB_8ynm0ROG8UIfL0i1p8Z2-J9qWDolSaASsEiGJUw">\n$ORG} if $pg eq 'inicio';
   my $corpo = "$c2\n\n$c\n$rod\n\n$scripts\n";
   gravar($arq, qq{<!doctype html>\n<html lang="pt-BR">\n<head>\n$head\n</head>\n<body data-pagina="$pg">\n$corpo</body>\n</html>\n});
   gravar('_preview.html', qq{<title>$titulo</title>\n$fontes\n<div data-pagina="$pg">\n$corpo</div>\n}) if $pg eq 'inicio';
