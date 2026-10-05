@@ -20,3 +20,5 @@ Teste "Qual impressora 3D comprar": perguntas, pesos e textos do resultado em `j
 - Publicar: `git add -A && git commit -m "..." && git push` (o GitHub Pages atualiza em 1 a 2 minutos).
 - Endereços diretos: `impressoras.html#serie-A`, `suporte.html#instalacao`, `#ajuda`, `#problemas`, `#i-h2c`, `orcamento.html#a1-combo`, `impressoras.html#m-p2s-combo` (rola até o modelo e destaca o cartão).
 - Domínio próprio: criar o arquivo `CNAME` com o domínio e apontar o DNS no registro.br para o GitHub Pages.
+- Links de pagamento: `PAGAR` em `js/site.js` (um link fixo da InfinitePay por modelo, com o mesmo valor do `PRECO`). Com link preenchido, a página da impressora mostra "Comprar agora"; vazio, fica o botão do WhatsApp. Depois de preencher, rode `perl montar.pl`.
+- Google Merchant Center: `montar.pl` gera `produtos.xml` (lista de produtos com preço, foto e disponibilidade). Encomendas usam a data prevista hoje + `$PRAZO` dias (no `montar.pl`): rode `perl montar.pl` pelo menos uma vez por mês para a data não vencer.

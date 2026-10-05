@@ -14,6 +14,14 @@ const PRECO = {
 // Página da PRIME 3D no Mercado Livre (rodapé e quadro de pagamento do catálogo). Vazio = links escondidos.
 // Em 04/10/2026 a conta ainda não tinha anúncios ativos; quando tiver, use: 'https://www.mercadolivre.com.br/perfil/FEDFGACHB73669'
 const ML = '';
+// Link de pagamento fixo de cada impressora (InfinitePay com "Repassar taxas": Pix pelo preço do site ou cartão em até 12x com os juros pagos pelo cliente).
+// Vazio = sem botão "Comprar agora" (o cliente fecha pelo WhatsApp). Depois de preencher, rode perl montar.pl.
+// O valor do link precisa ser igual ao PRECO acima (o Google confere preço da página x lista de produtos).
+const PAGAR = {
+  'a1m': '', 'a1m-combo': '', 'a1': '', 'a1-combo': '', 'a2l': '', 'a2l-combo': '',
+  'p1s-combo': '', 'p2s-combo': '', 'x2d-combo': '', 'h2s-combo': '', 'h2d-combo': '',
+  'h2dl-10w': '', 'h2dl-40w': '', 'h2c-combo': '',
+};
 if (ML) document.querySelectorAll('[data-ml]').forEach(e => { e.hidden = false; if (e.tagName === 'A') e.href = ML; });
 const brl = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const IC = { cartao: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 10h18M7 15h3"/></svg>', frete: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3.5V16h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>' };

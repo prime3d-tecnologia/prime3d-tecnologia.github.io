@@ -15,10 +15,12 @@ const SITE = 'https://prime3d-tecnologia.github.io/';
   const amsP1 = m.ams === 'ams' ? 'AMS de 1ª geração (4 rolos, sem secagem) ou AMS 2 Pro (4 rolos, secagem até 65 °C), conforme a versão. Até 16 cores com 4 unidades.' : '';
   const msg = encodeURIComponent(`Olá, PRIME 3D! Vi no site a Bambu Lab ${m.nome} (a partir de ${brl(preco)} à vista no Pix) e quero um orçamento.`);
   const zap = `https://wa.me/${ZAP}?text=${msg}`;
+  const pagar = PAGAR[m.id];
   const ico = {
     zap: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>',
     gar: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>',
     nf: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>',
+    cart: '<svg class="i-l" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a1.6 1.6 0 0 0 1.6 1.3h8.3a1.6 1.6 0 0 0 1.6-1.2L20.5 8H6.1"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/></svg>',
     env: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3.5V16h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>',
   };
 
@@ -45,10 +47,13 @@ const SITE = 'https://prime3d-tecnologia.github.io/';
         <div class="pd-kpis">${kpis.map(([k, v]) => `<div><span>${k}</span><b>${esc(v)}</b></div>`).join('')}</div>
         <div class="pd-compra">
           <div class="pd-preco">${DISP(m)}<span>a partir de</span><b>${brl(preco)}<small>à vista no Pix</small></b><em>ou em até 12x no cartão de crédito · consulte a taxa</em></div>
-          <div class="pd-btns">
-            <a class="btn pri" href="${zap}" target="_blank" rel="noopener">${ico.zap}Quero esta impressora</a>
-            <a class="btn sec" href="orcamento.html#${m.id}">Montar orçamento</a>
+          <div class="pd-btns">${pagar
+            ? `<a class="btn pri" href="${pagar}" target="_blank" rel="noopener">${ico.cart}Comprar agora</a>
+            <a class="btn sec" href="${zap}" target="_blank" rel="noopener">${ico.zap}Tirar dúvidas</a>`
+            : `<a class="btn pri" href="${zap}" target="_blank" rel="noopener">${ico.zap}Quero esta impressora</a>
+            <a class="btn sec" href="orcamento.html#${m.id}">Montar orçamento</a>`}
           </div>
+          ${pagar ? `<p class="pd-pag">Pagamento seguro pela InfinitePay: Pix pelo preço do site ou cartão em até 12x (juros da operadora).</p>` : ''}
           <ul class="pd-selos"><li>${ico.gar}Garantia de 1 ano do fabricante</li><li>${ico.nf}Original, com nota fiscal</li><li>${ico.env}Envio para todo o Brasil · frete à parte</li></ul>
         </div>
       </div>
@@ -115,7 +120,7 @@ const SITE = 'https://prime3d-tecnologia.github.io/';
     </div>
   </section>
 
-  <div class="pd-barra"><div><b>${brl(preco)}</b><span>à vista no Pix</span></div><a class="btn pri sm" href="${zap}" target="_blank" rel="noopener">Quero esta</a></div>`;
+  <div class="pd-barra"><div><b>${brl(preco)}</b><span>à vista no Pix</span></div><a class="btn pri sm" href="${pagar || zap}" target="_blank" rel="noopener">${pagar ? 'Comprar' : 'Quero esta'}</a></div>`;
 
   raiz.dataset.pronto = '1';
   // título, descrição e dados para o Google

@@ -44,9 +44,12 @@ for my $pg (qw(inicio impressoras qual-impressora suporte orcamento trocas)) {
 my $dados = ler('js/dados.js');
 my %preco = ler('js/site.js') =~ /'([a-z0-9-]+)': ([\d.]+)/g;
 my $brl = sub { my $v = sprintf '%.2f', shift; my ($i, $c) = split /\./, $v; 1 while $i =~ s/^(\d+)(\d{3})/$1.$2/; "R\$ $i,$c" };
-my @prod;
-while ($dados =~ /id: '([^']+)', nome: '([^']+)', serie: '([A-Z])', plat: '[^']+', img: '([^']+)',.*?frase: '([^']*)'/gs) {
-  my ($id, $nome, $serie, $img, $frase) = ($1, $2, $3, $4, $5); $frase =~ s/"/&quot;/g;
+my (@prod, @feed);
+sub xml { my $t = shift; $t =~ s/&/&amp;/g; $t =~ s/</&lt;/g; $t =~ s/>/&gt;/g; $t }
+while ($dados =~ /id: '([^']+)', nome: '([^']+)', serie: '([A-Z])', plat: '[^']+', img: '([^']+)',.*?frase: '([^']*)',\s*paraQuem: '([^']*)'/gs) {
+  my ($id, $nome, $serie, $img, $frase, $para) = ($1, $2, $3, $4, $5, $6);
+  push @feed, [$id, "Impressora 3D Bambu Lab $nome", xml("$frase $para Original, com nota fiscal e garantia de 1 ano."), $serie, $img];
+  $frase =~ s/"/&quot;/g;
   (my $foto = $img) =~ s{.*/}{img/maq/};
   my $titulo = "Bambu Lab $nome | Preço no Pix e ficha técnica | PRIME 3D";
   my $disp = $serie eq 'A' ? ' Pronta entrega.' : ' Sob encomenda.';  # mesma regra de ESTOQUE em js/site.js
@@ -59,6 +62,23 @@ while ($dados =~ /id: '([^']+)', nome: '([^']+)', serie: '([A-Z])', plat: '[^']+
   push @prod, $id; push @mapa, $url;
 }
 print "ok ", scalar(@prod), " páginas de impressora\n";
+
+# Lista de produtos para o Google Merchant Center (produtos.xml). Série A em estoque; demais sob encomenda,
+# com data prevista de chegada = hoje + $PRAZO dias (o Google exige essa data para "backorder").
+my $PRAZO = 30;  # PROVISÓRIO: confirmar com a empresa o prazo médio das encomendas
+my $chega = strftime('%Y-%m-%dT12:00-0300', localtime(time + $PRAZO * 86400));
+my $itens = join '', map {
+  my ($id, $tit, $desc, $serie, $img) = @$_;
+  (my $foto = $img) =~ s{.*/}{img/maq/};
+  my $disp = $serie eq 'A' ? '<g:availability>in_stock</g:availability>'
+    : "<g:availability>backorder</g:availability><g:availability_date>$chega</g:availability_date>";
+  my $preco = sprintf '%.2f', $preco{$id};
+  "  <item><g:id>$id</g:id><title>$tit</title><description>$desc</description><link>${SITE}bambu-lab-$id.html</link>"
+  . "<g:image_link>$SITE$foto</g:image_link>$disp<g:price>$preco BRL</g:price><g:condition>new</g:condition>"
+  . "<g:brand>Bambu Lab</g:brand><g:product_type>Impressoras 3D &gt; Série $serie</g:product_type></item>\n"
+} @feed;
+gravar('produtos.xml', qq{<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">\n<channel>\n<title>PRIME 3D Tecnologia</title>\n<link>$SITE</link>\n<description>Impressoras 3D Bambu Lab</description>\n$itens</channel>\n</rss>\n});
+print "ok produtos.xml (", scalar(@feed), " produtos para o Merchant Center)\n";
 
 # Mapa do site e robots.txt para o Google
 my $hoje = strftime('%Y-%m-%d', localtime);
