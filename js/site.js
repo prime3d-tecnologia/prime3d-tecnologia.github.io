@@ -184,6 +184,11 @@ const MANT = [
 const SERIE = { A: 'Série A · Entrada', P: 'Série P · Produção', X: 'Série X · Premium compacta', H: 'Série H · Profissional' };
 const NIVEL = ['', 'Iniciante', 'Iniciante+', 'Intermediário', 'Avançado', 'Profissional'];
 const foto = p => 'img/maq/' + p.split('/').pop();
+// Disponibilidade (04/10/2026): série A (entrada) em estoque; as maiores sob encomenda.
+const ESTOQUE = m => m.serie === 'A';
+const DISP = m => ESTOQUE(m) ? '<span class="disp ok">Pronta entrega</span>' : '<span class="disp enc">Sob encomenda</span>';
+// página de cada impressora (gerada pelo montar.pl)
+const pagina = m => 'bambu-lab-' + m.id + '.html';
 
 // ------------------------------------------------------------ vídeos
 function vid(id, mini) {
@@ -230,9 +235,9 @@ if ($('#cat')) {
 $('#cat').innerHTML = MODELOS.map(m => {
   const n = m.numeros;
   return `<article class="card" data-s="${m.serie}" id="m-${m.id}">
-    <div class="ph"><img src="${foto(m.img)}" alt="Bambu Lab ${esc(m.nome)}" loading="lazy"><span class="lvl">${NIVEL[m.nivel]}</span></div>
+    <div class="ph"><a href="${pagina(m)}" tabindex="-1" aria-hidden="true"><img src="${foto(m.img)}" alt="Bambu Lab ${esc(m.nome)}" loading="lazy"></a><span class="lvl">${NIVEL[m.nivel]}</span></div>
     <div class="bd">
-      <div><div class="sr">${SERIE[m.serie]}</div><h3>${esc(m.nome)}</h3></div>
+      <div><div class="sr">${SERIE[m.serie]}</div><h3><a href="${pagina(m)}">${esc(m.nome)}</a></h3></div>
       <p class="fr">${esc(m.frase)}</p>
       <dl class="spec">
         <div><dt>Maior peça</dt><dd>${n.tamanho}</dd></div>
@@ -248,10 +253,10 @@ $('#cat').innerHTML = MODELOS.map(m => {
         <div><b>O que faz</b><ul>${m.faz.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
         <div><b>Limites</b><ul>${m.limites.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
       </div></details>
-      ${PRECO[m.id] ? `<div class="preco"><span class="ap">a partir de</span><b>${brl(PRECO[m.id])}<small>no Pix</small></b><span class="ln">${IC.cartao}ou em até 12x no cartão <em>· consulte a taxa</em></span><span class="ln">${IC.frete}<em>Frete à parte, calculado no orçamento</em></span></div>` : ''}
+      ${PRECO[m.id] ? `<div class="preco">${DISP(m)}<span class="ap">a partir de</span><b>${brl(PRECO[m.id])}<small>no Pix</small></b><span class="ln">${IC.cartao}ou em até 12x no cartão <em>· consulte a taxa</em></span><span class="ln">${IC.frete}<em>Frete à parte, calculado no orçamento</em></span></div>` : ''}
       <div class="act">
-        <a class="btn pri sm" href="orcamento.html#${m.id}">Pedir orçamento</a>
-        <a class="btn sec sm" href="suporte.html#i-${PLAT_INST[m.plat]}">Instalação</a>
+        <a class="btn pri sm" href="${pagina(m)}">Ver detalhes e ficha técnica</a>
+        <a class="btn sec sm" href="orcamento.html#${m.id}">Pedir orçamento</a>
       </div>
     </div>
   </article>`;

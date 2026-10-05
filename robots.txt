@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /_preview.html
+
+Sitemap: https://prime3d-tecnologia.github.io/sitemap.xml

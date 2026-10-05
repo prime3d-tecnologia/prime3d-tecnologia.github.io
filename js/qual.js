@@ -144,7 +144,7 @@ corpo.addEventListener('click', e => {
 $('#qz-voltar').addEventListener('click', () => mostrar(Math.max(0, atual - 1)));
 
 function cartao(m, cls) {
-  return `<a class="qr-alt ${cls || ''}" href="impressoras.html#m-${m.id}"><span class="ph"><img src="${foto(m.img)}" alt="Bambu Lab ${esc(m.nome)}"></span>
+  return `<a class="qr-alt ${cls || ''}" href="${pagina(m)}"><span class="ph"><img src="${foto(m.img)}" alt="Bambu Lab ${esc(m.nome)}"></span>
     <span><b>${esc(m.nome)}</b><span class="pr">a partir de ${brl(PRECO[m.id])}</span><span class="vr">Ver detalhes →</span></span></a>`;
 }
 
@@ -166,9 +166,9 @@ function resultado() {
         <h2>Bambu Lab ${esc(top.nome)}</h2>
         <p class="fr">${esc(top.frase)}</p>
         <ul class="qr-pq">${porques(top, resp).map(x => `<li>${x}</li>`).join('')}</ul>
-        <div class="qr-preco"><span>a partir de</span><b>${brl(PRECO[top.id])}<small>no Pix</small></b><em>ou em até 12x no cartão · consulte a taxa · frete à parte</em></div>
+        <div class="qr-preco">${DISP(top)}<span>a partir de</span><b>${brl(PRECO[top.id])}<small>no Pix</small></b><em>ou em até 12x no cartão · consulte a taxa · frete à parte</em></div>
         <div class="qr-act">
-          <a class="btn pri" href="impressoras.html#m-${top.id}">Ver a ${esc(top.nome)}</a>
+          <a class="btn pri" href="${pagina(top)}">Ver a ${esc(top.nome)}</a>
           <a class="btn sec" href="https://wa.me/${ZAP}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Falar no WhatsApp</a>
         </div>
       </div>
