@@ -1,10 +1,12 @@
 #!/bin/bash
 # Grava o conteúdo montado pelo js/produto.js direto em cada bambu-lab-<id>.html (ficha técnica, preço e dados
 # Product para o Google), para que buscadores leiam a página sem depender de JavaScript.
-# Roda sozinho no fim do montar.pl. Usa o Edge sem janela (headless); não fecha o Edge do usuário.
+# Roda sozinho no fim do montar.pl. Usa o Chrome (ou o Edge) sem janela (headless); não fecha o Edge do usuário.
 cd "$(dirname "$0")" || exit 1
 E="/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
-[ -x "$E" ] || { echo "Edge não encontrado: páginas de impressora ficam só com JavaScript"; exit 0; }
+# o Edge sem janela parou de responder nesta máquina em 06/10/2026: usa o Chrome quando existir
+C="/c/Program Files/Google/Chrome/Application/chrome.exe"; [ -x "$C" ] && E="$C"
+[ -x "$E" ] || { echo "Navegador não encontrado: páginas de impressora ficam só com JavaScript"; exit 0; }
 PERFIL="$TEMP/prime3d-estatico"
 n=0
 for f in bambu-lab-*.html; do
