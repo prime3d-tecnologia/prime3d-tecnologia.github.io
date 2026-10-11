@@ -4,13 +4,14 @@
     <img class="af-mark" src="img/logo-mark-t.png" alt="" width="72" height="72">
     <div class="kick">Impressão 3D na prática</div>
     <h1>Action figures saindo da <span>impressora</span></h1>
-    <p>Um vídeo curto para cada impressora Bambu Lab do nosso catálogo, todos com menos de 3 minutos. Dê o play aqui mesmo: o vídeo roda pelo player do YouTube e o crédito fica com o criador.</p>
+    <p>Um vídeo curto para cada impressora Bambu Lab do nosso catálogo, mais dois especiais de Pokémon e Marvel, todos com menos de 3 minutos. Dê o play aqui mesmo: o vídeo roda pelo player do YouTube e o crédito fica com o criador.</p>
     <nav class="af-filtros" aria-label="Filtrar por série">
       <button type="button" data-serie="" aria-pressed="true">Todas</button>
       <button type="button" data-serie="A" aria-pressed="false">Série A</button>
       <button type="button" data-serie="P" aria-pressed="false">Série P</button>
       <button type="button" data-serie="X" aria-pressed="false">Série X</button>
       <button type="button" data-serie="H" aria-pressed="false">Série H</button>
+      <button type="button" data-serie="E" aria-pressed="false">Pokémon e Marvel</button>
     </nav>
   </div>
 </div>
@@ -47,19 +48,22 @@
     ['p2s-combo', 'P2S Combo', 'P', 'a2nNIQU5mIo', 'Dummy 13 articulado', 'Bernardo Ferraz'],
     ['x2d-combo', 'X2D Combo', 'X', 'EIw5BPUffkc', 'Michael Myers', 'badbutfunnie'],
     ['h2d-combo', 'H2D Combo', 'H', 'bn4eE9cMoIQ', 'Donatello robô gigante (94 horas)', '3D Printing Doctor'],
-    ['h2dl-10w', 'H2D Combo Full', 'H', 'S8_9AnF35zE', 'Homem de Ferro tartaruga em 5 cores', 'MaxDragonPrints'],
+    ['h2dl-10w', 'H2D Combo Full', 'H', 'jfnDPYNyF8A', 'Corte e gravação a laser + impressão 3D com AMS', 'Mano Jobs'],
     ['h2dl-40w', 'H2D Laser 40W', 'H', '9crx1-1cl2o', 'Guerreiro samurai', 'Spirit Technology'],
     ['h2s-combo', 'H2S Combo', 'H', 'Y1ZWT_fUW9c', 'Bonecos de Halloween', 'The Opinionated One'],
-    ['h2c-combo', 'H2C Combo', 'H', 'wMv7YDzcaPI', 'Miles Morales multicolorido', 'Tol3do Labs']
+    ['h2c-combo', 'H2C Combo', 'H', 'wMv7YDzcaPI', 'Miles Morales multicolorido', 'Tol3do Labs'],
+    // especiais (sem impressora fixa): série E
+    ['', 'Pokémon', 'E', 'XkpB2T6i6xM', 'Bulbassauro em tamanho real', 'Felps'],
+    ['p1s-combo', 'Marvel', 'E', '2rjYLA3iRAc', 'Homem-Aranha de 23 cm (P1S)', 'EveryDamnThing']
   ];
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   var g = document.getElementById('af-grade');
   g.innerHTML = V.map(function (v) {
     return '<article class="af-card" data-serie="' + v[2] + '">' +
-      '<div class="af-top"><span class="af-serie">Série ' + v[2] + '</span><h2>' + esc(v[1]) + '</h2></div>' +
+      '<div class="af-top"><span class="af-serie">' + (v[2] === 'E' ? 'Especial' : 'Série ' + v[2]) + '</span><h2>' + esc(v[1]) + '</h2></div>' +
       '<div class="af-video"><iframe src="https://www.youtube.com/embed/' + v[3] + '?rel=0&amp;playsinline=1" title="' + esc(v[4] + ' · ' + v[1]) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>' +
       '<div class="af-info"><p class="af-o">' + esc(v[4]) + '</p><p class="af-c">por ' + esc(v[5]) + '</p>' +
-      '<div class="af-links"><a href="https://www.youtube.com/shorts/' + v[3] + '" target="_blank" rel="noopener">Assistir no YouTube</a><a href="bambu-lab-' + v[0] + '.html">Ver a impressora</a></div></div>' +
+      '<div class="af-links"><a href="https://www.youtube.com/shorts/' + v[3] + '" target="_blank" rel="noopener">Assistir no YouTube</a>' + (v[0] ? '<a href="bambu-lab-' + v[0] + '.html">Ver a impressora</a>' : '<a href="impressoras.html">Ver as impressoras</a>') + '</div></div>' +
       '</article>';
   }).join('');
   var bts = document.querySelectorAll('.af-filtros button');
