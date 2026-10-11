@@ -524,8 +524,8 @@ body:has(.pd-barra) .fab { display: none; }
 .btn svg.i-l { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .pd-pag { margin: -6px 0 0; color: var(--mut); font-size: 13px; }
 
-/* ---------- Página Action figures (action-figures.html): visual escuro da marca ---------- */
-body[data-pagina="action-figures"] {
+/* ---------- Aba O que imprimir (o-que-imprimir.html) e página independente action-figures/: visual escuro da marca ---------- */
+body[data-pagina="o-que-imprimir"] {
   color-scheme: dark;
   --bg: #0d0e10; --bg2: #15171b; --bg3: #1d2026; --line: #2a2e36;
   --fg: #eef0f3; --mut: #9aa1ad; --or: #ff7a1a; --or2: #ffb43c;
@@ -565,3 +565,14 @@ body[data-pagina="action-figures"] {
 .af-cta h2 { font: 800 clamp(20px, 2.6vw, 26px)/1.25 var(--f-body); }
 .af-cta-bt { display: flex; flex-wrap: wrap; gap: 10px; }
 .af-nota { margin: 18px 0 0; color: var(--mut); font-size: 13px; max-width: 80ch; }
+
+/* Cabeçalho com 6 abas (desde 11/10/2026): abaixo de 1240 px o menu desce para uma 2ª linha com rolagem lateral */
+.top .logo { flex: none; }
+@media (max-width: 1400px) { .top nav .nv-lg { display: none; } }
+@media (max-width: 1240px) {
+  .top .wrap { flex-wrap: wrap; row-gap: 4px; padding-bottom: 0; }
+  .top .wrap > .btn.ig { margin-left: auto; }
+  .top .wrap > .btn.ig + .btn { margin-left: 6px; }
+  .top nav { order: 3; width: 100%; margin-left: 0; overflow-x: auto; gap: 0; scrollbar-width: none; }
+  .top nav a { padding: 10px 12px; margin-bottom: 0; font-size: 14.5px; }
+}

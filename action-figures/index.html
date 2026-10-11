@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Action Figures em 3D · PRIME 3D</title>
+<meta name="description" content="Vídeos curtos de action figures, bonecos, Pokémon e Marvel impressos em impressoras 3D Bambu Lab. Uma página da PRIME 3D Tecnologia.">
+<meta property="og:title" content="Action Figures em 3D · PRIME 3D">
+<meta property="og:description" content="Um vídeo curto para cada impressora Bambu Lab, mais especiais de Pokémon e Marvel.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://prime3d-tecnologia.github.io/img/logo-full-t.png">
+<meta name="theme-color" content="#0d0e10">
+<link rel="icon" href="../img/logo-mark-t.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Michroma&display=swap">
+<style>
+/* Página independente (sem o menu do site). Os vídeos vêm de ../js/af.js, o mesmo arquivo da aba "O que imprimir". */
+:root {
+  color-scheme: dark;
+  --bg: #0d0e10; --bg2: #15171b; --bg3: #1d2026; --line: #2a2e36;
+  --fg: #eef0f3; --mut: #9aa1ad; --or: #ff7a1a; --on-or: #1a0c02;
+  --grad: linear-gradient(90deg, #ff9a1f, #ff7a1a 55%, #ff4d00);
+  --f-disp: 'Michroma', 'Manrope', 'Segoe UI', sans-serif;
+  --f-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.6 var(--f-body); }
+a { color: inherit; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--or); outline-offset: 3px; border-radius: 6px; }
+h1, h2 { margin: 0; line-height: 1.15; text-wrap: balance; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; }
+.kick { font: 400 11px/1.4 var(--f-disp); letter-spacing: .22em; text-transform: uppercase; color: var(--or); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 800 15px/1 var(--f-body); text-decoration: none; border-radius: 999px; padding: 14px 22px; border: 1px solid transparent; transition: transform .15s, border-color .2s; }
+.btn:hover { transform: translateY(-1px); }
+.btn.pri { background: var(--grad); color: var(--on-or); }
+.btn.sec { color: var(--fg); border-color: var(--line); }
+.btn.sec:hover { border-color: var(--or); }
+.btn.sm { padding: 10px 16px; font-size: 14px; }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: rgba(13,14,16,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; gap: 10px; padding-block: 10px; }
+.bar img { height: 56px; display: block; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.bar .sp { margin-left: auto; }
+
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
+  background: radial-gradient(900px 520px at 85% -10%, rgba(255,122,26,.24), transparent 60%), radial-gradient(600px 400px at -10% 120%, rgba(255,77,0,.12), transparent 60%), var(--bg); }
+.hero::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .35;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, #000, transparent 85%); -webkit-mask-image: linear-gradient(180deg, #000, transparent 85%); }
+.hero .wrap { position: relative; z-index: 1; padding-block: 64px 44px; display: grid; gap: 16px; justify-items: start; }
+.hero h1 { font: 400 clamp(30px, 5.4vw, 60px)/1.1 var(--f-disp); max-width: 16ch; }
+.hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p { color: var(--mut); max-width: 60ch; margin: 0; }
+.nums { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 4px; }
+.nums div { display: grid; }
+.nums b { font: 800 26px/1.1 var(--f-body); }
+.nums span { color: var(--mut); font-size: 13px; }
+
+.af-filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.af-filtros button { font: 700 14px/1 var(--f-body); color: var(--fg); background: var(--bg2); border: 1px solid var(--line); border-radius: 999px; padding: 10px 16px; cursor: pointer; }
+.af-filtros button[aria-pressed="true"] { background: var(--grad); color: var(--on-or); border-color: transparent; }
+
+main .wrap { padding-block: 36px 56px; }
+.af-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.af-card { min-width: 0; display: flex; flex-direction: column; background: var(--bg2); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; transition: border-color .2s, transform .2s; }
+.af-card:hover { border-color: rgba(255,122,26,.6); transform: translateY(-2px); }
+.af-top { padding: 16px 18px 12px; display: grid; gap: 4px; }
+.af-serie { font: 400 10px/1.3 var(--f-disp); letter-spacing: .2em; text-transform: uppercase; color: var(--or); }
+.af-top h2 { font: 800 20px/1.2 var(--f-body); }
+.af-video { position: relative; aspect-ratio: 9 / 16; max-width: 100%; background: #000; }
+.af-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.af-info { padding: 14px 18px 18px; display: grid; gap: 4px; }
+.af-o { margin: 0; font-weight: 700; }
+.af-c { margin: 0; color: var(--mut); font-size: 14px; }
+.af-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; font-size: 14px; font-weight: 700; }
+.af-links a { color: var(--or); text-decoration: none; }
+.af-links a:hover { text-decoration: underline; }
+
+.cta { margin-top: 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 28px; border-radius: 20px; border: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(255,122,26,.16), rgba(255,77,0,.04) 60%), var(--bg2); }
+.cta > div:first-child { display: grid; gap: 8px; min-width: 0; max-width: 560px; }
+.cta h2 { font: 800 clamp(20px, 2.6vw, 26px)/1.25 var(--f-body); }
+.cta .bts { display: flex; flex-wrap: wrap; gap: 10px; }
+.nota { margin: 18px 0 0; color: var(--mut); font-size: 13px; max-width: 80ch; }
+
+footer { border-top: 1px solid var(--line); background: #08090a; }
+footer .wrap { padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; color: var(--mut); font-size: 14px; }
+footer img { height: 40px; display: block; }
+footer .ct { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+footer .ct a { color: var(--fg); text-decoration: none; font-weight: 700; }
+footer .ct a:hover { color: var(--or); }
+@media (max-width: 600px) {
+  .wrap { padding-inline: 16px; }
+  .bar img { height: 46px; }
+  .bar .ig span { display: none; }
+  .hero .wrap { padding-block: 40px 32px; }
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a href="https://prime3d-tecnologia.github.io/" aria-label="Site da PRIME 3D"><img src="../img/logo-full-t.png" alt="PRIME 3D"></a>
+    <a class="btn sec sm ig sp" href="https://www.instagram.com/prime3dtec" target="_blank" rel="noopener" aria-label="Instagram da PRIME 3D"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg><span>Instagram</span></a>
+    <a class="btn pri sm" href="https://wa.me/5519984197243?text=Ol%C3%A1!%20Vi%20os%20v%C3%ADdeos%20de%20action%20figures%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kick">PRIME 3D apresenta</div>
+    <h1>Action figures em <span>impressão 3D</span></h1>
+    <p>Bonecos, colecionáveis, Pokémon e heróis da Marvel saindo de impressoras Bambu Lab. Um vídeo curto para cada modelo do nosso catálogo, todos com menos de 3 minutos, para assistir aqui mesmo pelo player do YouTube.</p>
+    <div class="nums"><div><b>16</b><span>vídeos curtos</span></div><div><b>14</b><span>impressoras Bambu Lab</span></div><div><b>Até 2 min</b><span>cada vídeo</span></div></div>
+    <nav class="af-filtros" id="af-filtros" aria-label="Filtrar vídeos">
+      <button type="button" data-serie="" aria-pressed="true">Todos</button>
+      <button type="button" data-serie="A" aria-pressed="false">Série A</button>
+      <button type="button" data-serie="P" aria-pressed="false">Série P</button>
+      <button type="button" data-serie="X" aria-pressed="false">Série X</button>
+      <button type="button" data-serie="H" aria-pressed="false">Série H</button>
+      <button type="button" data-serie="E" aria-pressed="false">Pokémon e Marvel</button>
+    </nav>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <div class="af-grade" id="af-grade"></div>
+    <section class="cta">
+      <div>
+        <div class="kick">Quer imprimir os seus?</div>
+        <h2>A PRIME 3D ajuda você a escolher a impressora certa para bonecos e colecionáveis</h2>
+      </div>
+      <div class="bts">
+        <a class="btn pri" href="https://wa.me/5519984197243?text=Ol%C3%A1!%20Vi%20os%20v%C3%ADdeos%20de%20action%20figures%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento no WhatsApp</a>
+        <a class="btn sec" href="../impressoras.html">Ver as impressoras</a>
+      </div>
+    </section>
+    <p class="nota">Vídeos públicos do YouTube, exibidos pelo player oficial e com link para o canal de cada criador. A PRIME 3D não é autora dos vídeos. Na H2D Laser 40W, a impressão 3D é feita pela mesma máquina da H2D. Bambu Lab é marca de seu respectivo titular.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="../img/logo-full-t.png" alt="PRIME 3D">
+    <div class="ct">
+      <a href="https://wa.me/5519984197243" target="_blank" rel="noopener">WhatsApp (19) 98419-7243</a>
+      <a href="https://www.instagram.com/prime3dtec" target="_blank" rel="noopener">@prime3dtec</a>
+      <a href="https://prime3d-tecnologia.github.io/">prime3d-tecnologia.github.io</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/af.js"></script>
+<script>afMontar(document.getElementById('af-grade'), document.getElementById('af-filtros'), '../');</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!-- titulo: O que imprimir | descricao: Ideias do que imprimir em 3D: vídeos curtos de action figures, bonecos, Pokémon e Marvel impressos em cada impressora Bambu Lab vendida pela PRIME 3D. | aba: imprimir | scripts: site.js af.js -->
+<div class="af-hero">
+  <div class="wrap">
+    <div class="kick">O que imprimir</div>
+    <h1>Ideias que saem da <span>impressora</span></h1>
+    <p>Action figures, bonecos, Pokémon e Marvel: um vídeo curto para cada impressora Bambu Lab do nosso catálogo, todos com menos de 3 minutos. Dê o play aqui mesmo: o vídeo roda pelo player do YouTube e o crédito fica com o criador.</p>
+    <nav class="af-filtros" id="af-filtros" aria-label="Filtrar vídeos">
+      <button type="button" data-serie="" aria-pressed="true">Todas</button>
+      <button type="button" data-serie="A" aria-pressed="false">Série A</button>
+      <button type="button" data-serie="P" aria-pressed="false">Série P</button>
+      <button type="button" data-serie="X" aria-pressed="false">Série X</button>
+      <button type="button" data-serie="H" aria-pressed="false">Série H</button>
+      <button type="button" data-serie="E" aria-pressed="false">Pokémon e Marvel</button>
+    </nav>
+  </div>
+</div>
+
+<main class="af">
+  <div class="wrap">
+    <div class="af-grade" id="af-grade"></div>
+
+    <section class="af-cta">
+      <div>
+        <div class="kick">Quer imprimir os seus?</div>
+        <h2>A gente ajuda a escolher a impressora certa para bonecos e colecionáveis</h2>
+      </div>
+      <div class="af-cta-bt">
+        <a class="btn pri" href="https://wa.me/5519984197243?text=Ol%C3%A1!%20Vi%20os%20v%C3%ADdeos%20de%20action%20figures%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento no WhatsApp</a>
+        <a class="btn sec" href="qual-impressora.html">Qual impressora comprar?</a>
+      </div>
+    </section>
+    <p class="af-nota">Vídeos públicos do YouTube, exibidos pelo player oficial e com link para o canal de cada criador. A PRIME 3D não é autora dos vídeos. Na H2D Laser 40W, a impressão 3D é feita pela mesma máquina da H2D.</p>
+  </div>
+</main>
+
+<script>document.addEventListener('DOMContentLoaded', function () { afMontar(document.getElementById('af-grade'), document.getElementById('af-filtros'), ''); });</script>
