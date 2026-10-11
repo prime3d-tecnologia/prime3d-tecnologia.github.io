@@ -20,7 +20,7 @@ my $fontes = qq{<link rel="preconnect" href="https://fonts.googleapis.com">\n<li
 my $ORG = qq{<script type="application/ld+json">{"\@context":"https://schema.org","\@type":"OnlineStore","name":"PRIME 3D Tecnologia","legalName":"PRIME 3D TECNOLOGIA LTDA","url":"$SITE","logo":"${SITE}img/logo-mark-t.png","email":"prime3d.contabil\@gmail.com","telephone":"+55 19 98419-7243","sameAs":["https://www.instagram.com/prime3dtec"],"contactPoint":{"\@type":"ContactPoint","contactType":"sales","telephone":"+55 19 98419-7243","availableLanguage":"pt-BR","areaServed":"BR"}}</script>};
 my @mapa;
 
-for my $pg (qw(inicio impressoras qual-impressora suporte orcamento trocas)) {
+for my $pg (qw(inicio impressoras qual-impressora suporte orcamento trocas action-figures)) {
   my $c = ler("paginas/$pg.html");
   my ($meta) = $c =~ /^<!--(.*?)-->\n/s or die "$pg: sem cabeçalho de metadados";
   $c =~ s/^<!--.*?-->\n//s;
