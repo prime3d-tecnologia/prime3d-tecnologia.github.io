@@ -6,11 +6,11 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 // Preço "a partir de" (à vista no Pix, sem frete), por id do modelo em dados.js. Atualizado em 17/10/2026:
-// lucro de 10% sobre o preço = custo do reseller ÷ 0,86 (DAS 4% + lucro 10%), arredondado para cima; frete por conta do cliente.
+// lucro de 20% sobre o preço = custo do reseller ÷ 0,76 (DAS 4% + lucro 20%), arredondado para cima; frete por conta do cliente.
 const PRECO = {
-  'a1m': 1587.00, 'a1m-combo': 2845.00, 'a1': 2414.00, 'a1-combo': 3625.00, 'a2l': 3509.00, 'a2l-combo': 4719.00,
-  'p1s-combo': 5403.00, 'p2s-combo': 7524.00, 'x2d-combo': 9576.00, 'h2s-combo': 13201.00, 'h2d-combo': 17715.00,
-  'h2dl-10w': 22572.00, 'h2dl-40w': 27360.00, 'h2c-combo': 22298.00,
+  'a1m': 1795.00, 'a1m-combo': 3220.00, 'a1': 2732.00, 'a1-combo': 4102.00, 'a2l': 3970.00, 'a2l-combo': 5340.00,
+  'p1s-combo': 6114.00, 'p2s-combo': 8514.00, 'x2d-combo': 10836.00, 'h2s-combo': 14938.00, 'h2d-combo': 20046.00,
+  'h2dl-10w': 25542.00, 'h2dl-40w': 30959.00, 'h2c-combo': 25232.00,
 };
 // Página da PRIME 3D no Mercado Livre (rodapé e quadro de pagamento do catálogo). Vazio = links escondidos.
 // Em 04/10/2026 a conta ainda não tinha anúncios ativos; quando tiver, use: 'https://www.mercadolivre.com.br/perfil/FEDFGACHB73669'
