@@ -5,11 +5,12 @@ const yt = id => 'https://www.youtube.com/watch?v=' + id;
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-// Preço "a partir de" (à vista no Pix, sem frete), por id do modelo em dados.js. Atualizado em 04/10/2026.
+// Preço "a partir de" (à vista no Pix, sem frete), por id do modelo em dados.js. Atualizado em 17/10/2026:
+// lucro de 10% sobre o preço = custo do reseller ÷ 0,86 (DAS 4% + lucro 10%), arredondado para cima; frete por conta do cliente.
 const PRECO = {
-  'a1m': 1952.07, 'a1m-combo': 3424.99, 'a1': 3169.00, 'a1-combo': 4511.55, 'a2l': 4528.63, 'a2l-combo': 6108.59,
-  'p1s-combo': 7109.10, 'p2s-combo': 9233.90, 'x2d-combo': 12499.00, 'h2s-combo': 17000.00, 'h2d-combo': 23309.10,
-  'h2dl-10w': 29699.10, 'h2dl-40w': 35854.72, 'h2c-combo': 29339.10,
+  'a1m': 1587.00, 'a1m-combo': 2845.00, 'a1': 2414.00, 'a1-combo': 3625.00, 'a2l': 3509.00, 'a2l-combo': 4719.00,
+  'p1s-combo': 5403.00, 'p2s-combo': 7524.00, 'x2d-combo': 9576.00, 'h2s-combo': 13201.00, 'h2d-combo': 17715.00,
+  'h2dl-10w': 22572.00, 'h2dl-40w': 27360.00, 'h2c-combo': 22298.00,
 };
 // Página da PRIME 3D no Mercado Livre (rodapé e quadro de pagamento do catálogo). Vazio = links escondidos.
 // Em 04/10/2026 a conta ainda não tinha anúncios ativos; quando tiver, use: 'https://www.mercadolivre.com.br/perfil/FEDFGACHB73669'
