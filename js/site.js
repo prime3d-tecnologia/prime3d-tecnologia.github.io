@@ -5,12 +5,12 @@ const yt = id => 'https://www.youtube.com/watch?v=' + id;
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-// Preço "a partir de" (à vista no Pix, sem frete), por id do modelo em dados.js. Atualizado em 17/10/2026:
-// Série A: Combos com preço definido pelo usuário (A1 mini Combo 3.100, A1 Combo 3.900, A2L Combo 5.500); A1 mini, A1 e A2L
+// Preço "a partir de" (à vista no Pix, sem frete), por id do modelo em dados.js. Atualizado em 24/10/2026:
+// Série A: Combos com preço definido pelo usuário (A1 mini Combo 3.100, A1 Combo 3.800 (24/10, oferta do Instagram), A2L Combo 5.500); A1 mini, A1 e A2L
 // acompanham o Combo na mesma proporção. Séries P e X: lucro de 20% (custo do reseller ÷ 0,76). Série H: lucro de 25% (custo ÷ 0,71).
 // Lucro sobre o preço, já descontado o DAS de 4%; arredondado para cima; frete por conta do cliente.
 const PRECO = {
-  'a1m': 1728.00, 'a1m-combo': 3100.00, 'a1': 2597.00, 'a1-combo': 3900.00, 'a2l': 4089.00, 'a2l-combo': 5500.00,
+  'a1m': 1728.00, 'a1m-combo': 3100.00, 'a1': 2597.00, 'a1-combo': 3800.00, 'a2l': 4089.00, 'a2l-combo': 5500.00,
   'p1s-combo': 6114.00, 'p2s-combo': 8514.00, 'x2d-combo': 10836.00, 'h2s-combo': 15990.00, 'h2d-combo': 21458.00,
   'h2dl-10w': 27340.00, 'h2dl-40w': 33140.00, 'h2c-combo': 27009.00,
 };
